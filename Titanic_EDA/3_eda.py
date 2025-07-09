@@ -1,0 +1,26 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+df = pd.read_csv('cleaned_titanic.csv')
+sns.countplot(x='Survived', data=df)
+plt.title("Survival Count")
+plt.show()
+sns.countplot(x='Pclass', hue='Survived', data=df)
+plt.title("Survival by Class")
+plt.show()
+sns.countplot(x='Sex', hue='Survived', data=df)
+plt.title("Survival by Gender")
+plt.show()
+sns.histplot(df['Age'], bins=30, kde=True)
+plt.title("Age Distribution")
+plt.show()
+sns.boxplot(x='Survived', y='Age', data=df)
+plt.title("Age vs Survival")
+plt.show()
+df['FamilySize'] = df['SibSp'] + df['Parch'] + 1
+sns.countplot(x='FamilySize', hue='Survived', data=df)
+plt.title("Family Size vs Survival")
+plt.show()
+sns.countplot(x='Embarked', hue='Survived', data=df)
+plt.title("Survival by Port")
+plt.show()
